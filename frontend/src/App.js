@@ -38,14 +38,11 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Modified analyze to accept an optional argument (for tag clicks)
   const analyze = async (searchTerm = null) => {
-    // If searchTerm is passed (from tag click), use it. Otherwise use state 'input'.
     const query = typeof searchTerm === "string" ? searchTerm : input;
     
     if (!query || !query.trim()) return;
 
-    // If it was a tag click, update the input box to show what we are searching
     if (typeof searchTerm === "string") {
       setInput(searchTerm);
     }
@@ -74,12 +71,10 @@ function App() {
     }
   };
 
-  // Helper to handle tag clicks
   const handleTagClick = (tag) => {
     analyze(tag);
   };
 
-  // Check if we are in the "initial" state (no results, no loading)
   const isInitial = tags.length === 0 && recs.length === 0 && !loading;
 
   return (
